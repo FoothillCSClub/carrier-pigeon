@@ -1,6 +1,0 @@
-
-This is the source tree for Carrier Pigeon, an encrypted text chat
-application, writen in Python.
-
-The client program's source is in the client/ directory, and the server
-is in server/
