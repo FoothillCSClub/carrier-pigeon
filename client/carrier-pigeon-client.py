@@ -9,11 +9,23 @@ import sys
 sys.path += ["../"]
 
 import readline
+from socket import *
 from carrier_pigeon_classes.message import *
 
-"""
-[TODO] Add code here to establish connection to remote host...
-"""
+def fatal(msg):
+    print(msg, file=sys.stderr)
+    sys.exit(1)
+
+connect_host = "127.0.0.1"
+connect_port = 6666
+
+sock = socket()
+try:
+    # set network timeout to something sane
+    sock.settimeout(5)
+    sock.connect((connect_host, connect_port))
+except Exception as e:
+    fatal("Error connecting to " + connect_host + ":" + str(connect_port) + ": " + str(e))
 
 while True:
     try:
