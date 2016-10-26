@@ -24,6 +24,7 @@ try:
     # set network timeout to something sane
     sock.settimeout(5)
     sock.connect((connect_host, connect_port))
+    fsock = sock.makefile(mode="w", encoding="utf-8", buffering=4096)
 except Exception as e:
     fatal("Error connecting to " + connect_host + ":" + str(connect_port) + ": " + str(e))
 
@@ -37,7 +38,8 @@ while True:
         sys.exit(0)
 
     if (len(msg) > 0):
-        print("trying to send '" + str(msg) + "'...")
-    """
-    [TODO] Add code to actually send the message to the remote end here
-    """
+        try:
+            print(msg, file=fsock)
+            fsock.flush()
+        except Exception as e:
+            fatal("Error sending message to remote host: " + str(e))
