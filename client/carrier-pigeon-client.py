@@ -16,8 +16,8 @@ def fatal(msg):
     print(msg, file=sys.stderr)
     sys.exit(1)
 
-connect_host = "127.0.0.1"
-connect_port = 6666
+connect_host = "foothillstemclubs.org"
+connect_port = 4545
 
 sock = socket()
 try:
