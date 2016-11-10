@@ -2,6 +2,7 @@
 """
 Class for encapsulating text messages
 """
+import json
 
 class Message:
     def __init__(self, text = ""):
@@ -17,4 +18,4 @@ class Message:
         return len(self.text)
 
     def serialize(self):
-        return bytes(self.text + "\n", "utf-8")
+        return json.dumps(self.text + "\n")
