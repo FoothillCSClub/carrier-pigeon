@@ -18,4 +18,11 @@ class Message:
         return len(self.text)
 
     def serialize(self):
-        return json.dumps(self.text + "\n")
+        return json.dumps(self.text)
+
+    def deserialize(string):
+        obj = json.loads(string)
+        objtype = type(obj)
+        if objtype != str:
+            raise TypeError("JSON decode yields wrong object type: expected str, got " + objtype)
+        return Message(obj)
