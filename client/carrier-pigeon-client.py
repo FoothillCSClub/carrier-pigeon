@@ -64,6 +64,8 @@ while True:
         elif key.fileobj is network_recv:
             # XXX: crude hack; what if the network is only ready to give us part of the message?
             network_input = network_recv.readline()
+            if network_input == "":
+                exit("remote end hung up")
             try:
                 msg = Message.deserialize(network_input)
                 print(msg)
