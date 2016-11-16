@@ -68,6 +68,7 @@ while True:
                 exit("remote end hung up")
             try:
                 msg = Message.deserialize(network_input)
+                print("")
                 print(msg)
             except BaseException as e:
                 print("Error parsing message from network: " + str(e))
