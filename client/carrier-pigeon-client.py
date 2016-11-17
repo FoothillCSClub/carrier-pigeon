@@ -8,7 +8,6 @@ import sys
 
 sys.path += ["../"]
 
-import readline
 from socket import *
 from selectors import *
 from carrier_pigeon_classes.message import *
@@ -33,7 +32,7 @@ if options.server_test_mode:
     try:
         # allow for quick reuse of the address
         sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
-        sock.bind(("localhost", options.port))
+        sock.bind(("0.0.0.0", options.port))
         sock.listen(1)
         print("listening on port " + str(options.port) + "...")
         (sock, peeraddr) = sock.accept()
